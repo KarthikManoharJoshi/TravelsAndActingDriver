@@ -8,7 +8,6 @@ const path = require('path');
 const { PDFDocument, StandardFonts } = require('pdf-lib');
 const nodemailer = require('nodemailer');
 const twilio = require('twilio');
-const { Resend } = require('resend');
 
 const app = express();
 app.use(cors());
@@ -26,12 +25,13 @@ const admins = {
   phones: ['+917598121302']
 };
 
-// Nodemailer transporter
+// Nodemailer transporter using SendGrid
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.sendgrid.net',
+  port: 587,
   auth: {
-    user: process.env.GMAIL_USER,           // your Gmail email
-    pass: process.env.GMAIL_APP_PASSWORD    // Gmail App Password
+    user: process.env.SENDGRID_USERNAME, // your SendGrid username
+    pass: process.env.SENDGRID_PASSWORD  // your SendGrid password
   }
 });
 
@@ -90,10 +90,9 @@ app.post('/submit', async (req, res) => {
       return res.status(400).send({ message: 'Invalid service type' });
     }
 
-    sendEmail()
     // Send Email
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: 'noreply@yourdomain.com', // can be any verified sender in SendGrid
       to: admins.emails.join(','),
       subject: `New ${data.serviceType} Request`,
       text: `
@@ -125,33 +124,6 @@ Message: ${data.message || 'N/A'}
     res.status(500).send({ message: 'Error saving request', error: error.message });
   }
 });
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-async function sendEmail() {
-  try {
-    const data = await resend.emails.send({
-      from: 'Travel Enquiry <enjoy@rockforttravels.com>', // or your domain email
-      to: 'KarthikManoharJoshi.1604064@srec.ac.in',
-      subject: 'New Travel Enquiry',
-      html: `
-New ${data.serviceType} request:
-
-Name: ${data.name}
-Phone: ${data.phone}
-Email: ${data.email || 'N/A'}
-From: ${data.from}
-To: ${data.to}
-Days: ${data.days}
-Purpose: ${data.purpose}
-Message: ${data.message || 'N/A'}
-      `,
-    });
-    console.log('✅ Email sent:', data);
-  } catch (error) {
-    console.error('❌ Error:', error);
-  }
-}
 
 // Serve index.html at root
 app.get('/', (req, res) => {
