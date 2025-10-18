@@ -1,0 +1,109 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f7f9fc;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #0f5ba7;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+}
+
+.form-section {
+  background: white;
+  max-width: 550px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  text-align: center;
+  color: #0f5ba7;
+  margin-bottom: 0.3rem;
+}
+
+.form-intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.error {
+  color: #b71c1c;
+  background: #ffebee;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input, select, textarea {
+  padding: 0.8rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+select {
+  background: white;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#otherPurposeBox {
+  margin-top: 1rem;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #0f5ba7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #0d4b8a;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #eee;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}

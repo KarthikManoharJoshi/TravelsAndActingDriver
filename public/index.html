@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Tamil Nadu Travels</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🚗 Explore Tamil Nadu Your Way!</h1>
+    <p class="tagline">Hire trusted drivers and comfortable vehicles for your next Tamil Nadu tour.</p>
+  </header>
+
+  <section class="form-section">
+    <h2>Request Form</h2>
+    <p class="form-intro">Tell us your plan and we will reach out.</p>
+
+    <div id="error-message" class="error hidden">Network error. Try again later.</div>
+
+    <form id="travelForm">
+      <label for="name">Name*</label>
+      <input type="text" id="name" name="name" placeholder="Karthik" required>
+
+      <label for="phone">Phone Number*</label>
+      <input type="tel" id="phone" name="phone" placeholder="7598121302" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="karthikManoharjoshi.1604064@Srec.ac.in">
+
+      <!-- NEW: Service Type -->
+      <label for="serviceType">Service Required*</label>
+      <select id="serviceType" name="serviceType" required>
+        <option value="">Select</option>
+        <option value="Acting Driver">Acting Driver</option>
+        <option value="Vehicle Rental">Vehicle Rental</option>
+      </select>
+
+      <label for="purpose">Purpose of Travel*</label>
+      <select id="purpose" name="purpose" required>
+        <option value="">Select</option>
+        <option value="Tour">Tour</option>
+        <option value="Business">Business</option>
+        <option value="Personal">Personal</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <!-- Hidden input for 'Other' purpose -->
+      <div id="otherPurposeBox" class="hidden">
+        <label for="otherPurpose">Please specify*</label>
+        <input type="text" id="otherPurpose" name="otherPurpose" placeholder="Enter your purpose">
+      </div>
+
+      <label for="from">From (City / District)*</label>
+      <input type="text" id="from" name="from" placeholder="Chennai" required>
+
+      <label for="to">To (City / District)*</label>
+      <input type="text" id="to" name="to" placeholder="Coimbatore" required>
+
+      <label for="days">Number of Days*</label>
+      <input type="number" id="days" name="days" placeholder="1" required min="1">
+
+      <label for="message">Message (optional)</label>
+      <textarea id="message" name="message" placeholder="Any other details (dates, budget, preferences)"></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Go Tamil Nadu Travels. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
